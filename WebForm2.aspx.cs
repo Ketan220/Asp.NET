@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace WebApplication1
+namespace WebApplication2
 {
     public partial class WebForm2 : System.Web.UI.Page
     {
@@ -16,13 +16,17 @@ namespace WebApplication1
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            int n1, n2;
-            n1 = Convert.ToInt32(TextBox1.Text);
-            n2 = Convert.ToInt32(TextBox2.Text);
+            Panel1.Visible = true;
+        }
 
-            int Add=n1 + n2;
+        protected void Button2_Click(object sender, EventArgs e)
+        {
+            Panel1.Visible = false;
+        }
 
-            Label1.Text = "Addition=" + Add;
+        protected void Calendar1_SelectionChanged(object sender, EventArgs e)
+        {
+            Label1.Text = Calendar1.SelectedDate.ToShortDateString();//with time
         }
     }
 }
