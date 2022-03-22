@@ -4,56 +4,71 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using System.Data.SqlClient;
 
-namespace WebApplication3
+namespace WebApplication11
 {
     public partial class WebForm2 : System.Web.UI.Page
     {
-        static string cn = "data source=DESKTOP-JEOJBC2\\SQLEXPRESS;integrated security=true;database=test";
-        SqlConnection con = new SqlConnection(cn);
         protected void Page_Load(object sender, EventArgs e)
         {
-            System.Text.StringBuilder sb = new System.Text.StringBuilder();
 
-            string qr = "select * from signup1 ";
-            SqlCommand command = new SqlCommand(qr, con);
-            con.Open();
-            SqlDataReader dr = command.ExecuteReader();
-            sb.Append("<table border=1 align=center width=80% ");
-            sb.Append("<tr><th>userid</th><th>username</th><th>gender</th><th>hobby1</th><th>hobby2</th><th>city</th></tr>");
+        }
 
-            while (dr.Read())
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            //code to create temporary cookie
+            HttpCookie cookie1 = new HttpCookie("cook");
+            cookie1.Values.Add("username", TextBox1.Text);
+            Response.Cookies.Add(cookie1);
+            Label1.Text = "temporary cookie added to client machine";
+
+        }
+
+        protected void Button2_Click(object sender, EventArgs e)
+        {
+            //code to retrieve cookie from client machine
+            HttpCookie cookie1 = Request.Cookies["cook"];
+            if (cookie1 != null)
             {
-                sb.Append("<tr>");
-                sb.Append("<td>");
-                sb.Append(dr["userid"].ToString());
-                sb.Append("</td>");
-
-                sb.Append("<td>");
-                sb.Append(dr["username"].ToString());
-                sb.Append("</td>");
-
-                sb.Append("<td>");
-                sb.Append(dr["gender"].ToString());
-                sb.Append("</td>");
-
-                sb.Append("<td>");
-                sb.Append(dr["hobby1"].ToString());
-                sb.Append("</td>");
-
-                sb.Append("<td>");
-                sb.Append(dr["hobby2"].ToString());
-                sb.Append("</td>");
-
-                sb.Append("<td>");
-                sb.Append(dr["city"].ToString());
-                sb.Append("</td>");
-
-                sb.Append("</tr>");
+                string uname = cookie1.Values["username"].ToString();
+                Label1.Text = "username : " + uname;
             }
-            sb.Append("</table>");
-            Label1.Text = sb.ToString();
+            else
+            {
+                Label1.Text = "no cookie exist";
+            }
+
+
+        }
+
+        protected void Button3_Click(object sender, EventArgs e)
+        {
+            //code to create temporary cookie
+            HttpCookie cookie2 = new HttpCookie("cook1");
+            cookie2.Values.Add("username", TextBox1.Text);
+            DateTime dt =  DateTime.Now;
+            TimeSpan ts = new TimeSpan(0, 2, 0);
+            cookie2.Expires = dt.Add(ts);
+            Response.Cookies.Add(cookie2);
+            Label1.Text = "temporary cookie added to client machine";
+
+
+        }
+
+        protected void Button4_Click(object sender, EventArgs e)
+        {
+            HttpCookie cookie2 = Request.Cookies["cook1"];
+            if (cookie2 != null)
+            {
+                string uname = cookie2.Values["username"].ToString();
+                
+                Label1.Text = "username : " + uname;
+            
+            }
+            else
+            {
+                Label1.Text = "no permanent cookie exist";
+            }
 
         }
     }
