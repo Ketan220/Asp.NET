@@ -5,23 +5,25 @@ using System.Web;
 using System.Web.Security;
 using System.Web.SessionState;
 
-namespace WebApplication12
+namespace WebApplication13
 {
     public class Global : System.Web.HttpApplication
     {
 
         protected void Application_Start(object sender, EventArgs e)
         {
-            Application["companyname"] = "mkpits";
-            Application["companycity"] = "nagpur";
-            Application["counter"] = 0;
-
+            // Code that runs on application startup
+            Application["companyname"] = "mkplacement";
+            Application["address"] = "Bharat nagar nagpur";
+            Application["count"] = 0;
         }
 
         protected void Session_Start(object sender, EventArgs e)
         {
-            Session["uname"] = "Amit";
+            // Code that runs when a new session is started
             Session["usercount"] = 0;
+            Session["username"] = "";
+            Session["email"]= "";
         }
 
         protected void Application_BeginRequest(object sender, EventArgs e)
