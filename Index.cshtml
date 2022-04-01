@@ -3,24 +3,20 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index Page</h2>
-@model WebApplication26.Models.UserModel
+@using (Html.BeginForm("Index","Signup",FormMethod.Post))
+            {
+                <h2>Sign up Form</h2>
+                <b>User name:</b> @Html.TextBox("username","",new  { style="color:red"})
+                <br />
+                <br />
+                <b>Password:</b>@Html.TextBox("password","",new {style="color:red" })
+                <br />
+                <br />
+                <input type="submit" value="Sign up"/>
 
-@using (Html.BeginForm("Index","Sample",FormMethod.Post))
- {
-               <b>Name:</b> @Html.TextBox("Name","Enter name", new  { style="color:red"})
-
-    <hr />
-    <b>Name:</b>@Html.TextBoxFor(m => m.Name, new{  @Value="Enter name", @class="blue"})
-}
+            }
 
 <hr />
-<input type="submit" value="Submit Form"/>
-
-<style>
-    .blue{
-        color:cornflowerblue;
-    }
-</style>
-
-<p>Your name is:@ViewBag.Name</p>
+<p>SignupForm Details:</p>
+User name is:@ViewBag.username<br />
+Password is:@ViewBag.password<br />
