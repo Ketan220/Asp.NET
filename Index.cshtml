@@ -2,21 +2,21 @@
 @{
     ViewBag.Title = "Index";
 }
-<h2>Calculate</h2>
-@model WebApplication26.Models.CalculateModel
 
-@using (Html.BeginForm("Index", "Calculate", FormMethod.Post))
+<h2>To Find Even  or Odd</h2>
+@model WebApplication26.Models.EvenModel
+
+@using (Html.BeginForm("Index", "Even", FormMethod.Post))
 {
-    <h2>Calculate Form </h2>
-    <b>Enter number1:</b>@Html.TextBoxFor(m => m.num1, new { @value = "Enter num1", style = "color:red" })
+      
+    <b>Enter number1:</b>@Html.TextBoxFor(m => m.num, new { @value = "Enter num1", style = "color:red" })
     <br />
     <br />
-    <b>Enter  Number2</b>@Html.TextBoxFor(m => m.num2, new { @value = "Enter num2", style = "color:red" })
-    <br />
-    <br />
-    <input type="submit" value="calculate"/>
+    <input type="submit" value="calculate" />
 
 }
 <hr />
-<h3>addition of two no</h3>
-<b>Addition:</b>@ViewBag.result;
+
+<b>Result:</b>@ViewBag.result;
+
+
