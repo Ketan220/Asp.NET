@@ -3,12 +3,12 @@
     ViewBag.Title = "Index";
 }
 
-<h2>To Find Even  or Odd</h2>
-@model WebApplication26.Models.EvenModel
+<h2>To Find factorial</h2>
+@model WebApplication26.Models.FactorialModel
 
-@using (Html.BeginForm("Index", "Even", FormMethod.Post))
+@using (Html.BeginForm("Index", "Factorial", FormMethod.Post))
 {
-      
+    <h2>Calculate Form </h2>
     <b>Enter number1:</b>@Html.TextBoxFor(m => m.num, new { @value = "Enter num1", style = "color:red" })
     <br />
     <br />
@@ -17,6 +17,4 @@
 }
 <hr />
 
-<b>Result:</b>@ViewBag.result;
-
-
+<b>Factorial:</b>@ViewBag.result;
