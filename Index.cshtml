@@ -3,29 +3,32 @@
 *@
 
 
-<h3><b>Forms - Form Collection Objects</b></h3>
-@using (Html.BeginForm("Submit", "User", FormMethod.Post))
-{ 
+
+<h3><b>Forms: Weakly Typed</b></h3>
+ 
+<form action="form1" method="post">
     <table>
         <tr>
-            <td>Enter ID: </td>            
-            <td>@Html.TextBox("Id")</td>
+            <td>Enter ID: </td>
+            <td><input type="text" name="txtId" /></td>
         </tr>
         <tr>
             <td>Enter Name: </td>
-            <td>@Html.TextBox("Name")</td>
+            <td><input type="text" name="txtName" /></td>
         </tr>
         <tr>
             <td>Addon: </td>
-            <td>@Html.CheckBox("Addon", false)</td>
+            <td><input type="checkbox" name="chkAddon" /></td>
         </tr>
         <tr>
-            <td colspan="2"><input type="submit" value="Submit"></td>
+            <td colspan="2"><input type="submit" value="Submit Form" /></td>
         </tr>
     </table>
-}
+</form>
+
+<hr />
 <h4 style="color:purple">
-    ID: @ViewBag.Id<br />
-    Name: @ViewBag.Name<br />
-    Addon: @ViewBag.Addon
+    <b>ID:</b>    @ViewBag.ID <br />
+    <b>Name:</b>  @ViewBag.Name <br />
+    <b>Addon:</b> @ViewBag.Addon
 </h4>
