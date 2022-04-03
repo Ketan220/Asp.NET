@@ -1,24 +1,32 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-
-@model WebApplication27.Models.MarksModel;
-@using (Html.BeginForm("Index","Marks",FormMethod.Post))
-{
-    <h2>Students Marks</h2>
-    <br />
-    <b>Enter marks1:</b>@Html.TextBox("marks1","",new{style="color:blue"})
-    <br />
-    <b>Enter marks2:</b>@Html.TextBox("marks2","",new{style="color:blue"})
-    <br />
-    <b>Enter marks3:</b>@Html.TextBox("marks3","",new{style="color:red"})
-    <br />
-    <br />
-    <input type="submit" value="marks"/>
-
+﻿
+@{
+    ViewBag.Title = "Index";
 }
+
+@model WebApplication28.Models.UserModel
+
+<h1>Html.DisplayFor Example</h1>
+
+@using (Html.BeginForm("Index", "User", FormMethod.Post))
+{
+    <span>Enter Your Name:</span> @Html.TextBoxFor(m => m.UserName)
+    <br />
+    <span>Enter Your Age: </span> @Html.TextBoxFor(m => m.Age)
+    <br />
+    <span>Enter Your City: </span>@Html.TextBoxFor(m => m.City)
+    <br />
+
+    <input id="Submit" type="submit" value="submit" />
+}
+
 <hr />
-<h3>Students marks Details</h3>
-<b>Total:</b>@ViewBag.total;<br />
-<b>Percentage:</b>@ViewBag.per;<br />
-<b>Grade:</b>@ViewBag.res;
+
+<strong>User Name: </strong> @Html.DisplayFor(m => m.UserName)
+<br />
+<strong>User Age: </strong> @Html.DisplayFor(m => m.Age)
+<br />
+<strong>User City: </strong> @Html.DisplayFor(m => m.City)
+<br />
+
+
+
