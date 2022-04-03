@@ -1,15 +1,33 @@
 ﻿@*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
- @model WebApplication31.Models.NameforModel
-<h1>Html.NameFor Example</h1>
- 
-@using (Html.BeginForm("Index", "Home", FormMethod.Post))
-{
-    <strong>@Html.NameFor(m => m.UserName)</strong> @Html.TextBoxFor(m => m.UserName)<br /><br />
-    <strong>@Html.NameFor(m => m.Age)</strong> @Html.TextBoxFor(m => m.Age)<br /><br />
-    <strong>@Html.NameFor(m => m.City)</strong> @Html.TextBoxFor(m => m.City)<br />
- 
-    <input id = "Submit" type = "submit" value = "submit" />
-}
+@model WebApplication32.Models.StronglyModel
 
+<h3><b>Forms: Strongly Typed</b></h3>
+ 
+@using (Html.BeginForm("Form2", "Strongly", FormMethod.Post))
+{ 
+    <table>
+        <tr>
+            <td>Enter ID: </td>
+            <td>@Html.TextBoxFor(m => m.Id)</td>
+        </tr>
+        <tr>
+            <td>Enter Name: </td>
+            <td>@Html.TextBoxFor(m => m.Name)</td>
+        </tr>
+        <tr>
+            <td>Addon: </td>
+            <td>@Html.CheckBoxFor(m => m.Addon)</td>
+        </tr>
+        <tr>
+            <td colspan="2"><input type="submit" value="Submit Form" /></td>
+        </tr>
+    </table>
+}
+<hr />
+<h4 style="color:purple">
+    <b>ID:</b>    @ViewBag.ID <br />
+    <b>Name:</b>  @ViewBag.Name <br />
+    <b>Addon:</b> @ViewBag.Addon
+</h4>
