@@ -1,24 +1,25 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-using WebApplication28.Models;
+﻿using Microsoft.AspNetCore.Mvc;
+using WebApplication32.Models;
 
-namespace WebApplication28.Controllers
+namespace WebApplication32.Controllers
 {
     public class UserController : Controller
     {
-        // GET: User
-        public ActionResult Index()
+        public IActionResult Index()
         {
             return View();
         }
         [HttpPost]
-        public ActionResult Index(UserModel um)
+        public ActionResult Submit(FormCollection fc)
         {
-            return View(um);
+            ViewBag.Id = fc["Id"];
+            ViewBag.Name = fc["Name"];
+            bool chk = Convert.ToBoolean(fc["Addon"].Split(',')[0]);
+            ViewBag.Addon = chk;
+
+            return View("Index");
         }
+
 
     }
 }
