@@ -1,25 +1,31 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-using WebApplication26.Models;
+﻿using Microsoft.AspNetCore.Mvc;
+using WebApplication29.Models;
 
-namespace WebApplication26.Controllers
+namespace WebApplication29.Controllers
 {
     public class SignupController : Controller
     {
-        // GET: Signup
-        public ActionResult Index()
+        public IActionResult Index()
         {
             return View();
         }
         [HttpPost]
-        
-        public ActionResult Index(SignupModel u)
+        public IActionResult Index(SignupModel u)
         {
             ViewBag.username = u.username;
-            ViewBag.password = u.password;  
+            ViewBag.gender=u.gender;
+
+            if(u.java==true)
+            {
+                ViewBag.java = "Java";
+            }
+            else if(u.dotnet==true)
+            {
+                ViewBag.dotnet = "dotnet";
+            }
+
+            var selectedValue = u.SelectCityType;
+            ViewBag.CityType = selectedValue.ToString();
 
             return View();
         }
