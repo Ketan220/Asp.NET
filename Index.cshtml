@@ -1,30 +1,28 @@
 ﻿@*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
-@{
+@model WebApplication29.Models.Radiobutton1Model;
+@using (Html.BeginForm("Index", "Radiobutton1", FormMethod.Post))
+{   
+ 
+     <b>Select Tea Type: </b><br />
+     <span>Tea: </span> @Html.RadioButtonFor(m => m.TeaType, "Tea")
+     <span> | Coffee: </span> @Html.RadioButtonFor(m => m.TeaType, "Coffee")
+     <span> | BlackTea: </span> @Html.RadioButtonFor(m => m.TeaType, "BlackTea")
+     <span> | GreenTea: </span> @Html.RadioButtonFor(m => m.TeaType, "GreenTea")
+    <br />
+    <hr />
+    <b>Select Hotel: </b><br />
+    <span>Hotel Grand Plaza: </span> @Html.RadioButtonFor(m => m.HotelType, "HotelGrandPlaza")
+    <span> | Hotel Lake View: </span> @Html.RadioButtonFor(m => m.HotelType, "HotelLakeView")
+    <span> | Hotel River Side: </span> @Html.RadioButtonFor(m => m.HotelType, "HotelRiverSide")
+    <span> | Hotel Mountain View: </span> @Html.RadioButtonFor(m => m.HotelType, "MountainView")
+    <br />
+    <input type="submit" value="submit" />
+    
 }
-
-@model WebApplication29.Models.Checkbox2Model;
-@using (Html.BeginForm("Index","Checkbox2",FormMethod.Post))
-{
-    <h2>Calculation of two no using checkbox</h2>
-    <b>Enter number1:-</b>@Html.TextBox("num1","",new{style="coloe:blue"})
-    <br />
-    <br />
-    <b>Enter number2:-</b>@Html.TextBox("num2","",new{style="coloe:blue"})
-    <br />
-    <br />
-    <span>Add:</span>@Html.CheckBox("add",false)
-    <span>| sub:</span>@Html.CheckBox("sub",false)
-    <span>| Mul:</span>@Html.CheckBox("mul",false)
-    <br />
-    <br />
-    <input type="submit" value="ok"/>
-
-}
-<hr />
-<h3>Calculation</h3>
-<b>Addition is:</b>@ViewBag.add;<br />
-<b>substraction is:</b>@ViewBag.sub<br />
-<b>multiplication is:</b>@ViewBag.mul;
+ 
+<h4>You Selected</h4>
+<b>Tea Type: </b>@ViewBag.TeaType<br />
+<b>Hotel Type: </b>@ViewBag.HotelType
 
