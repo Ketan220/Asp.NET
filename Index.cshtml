@@ -1,16 +1,21 @@
 ﻿@*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
-
-@model WebApplication30.Models.TextareaforModel
-@using (Html.BeginForm("Index", "Textareafor", FormMethod.Post))
+@model WebApplication31.Models.EditorforModel
+<h1>Html.NameFor Example</h1>
+ 
+@using (Html.BeginForm("Index", "Editorfor", FormMethod.Post))
 {
-    <h1>Textareafor </h1><br /><br />
-    <b>Name: </b>@Html.TextAreaFor(m => m.Name, new { style = "color:red" }) 
-    <br />
-    <br />
-    <input type="submit" value="textarea"/>
+    <strong>Name </strong> @Html.EditorFor(m => m.UserName)<br /><br />
+    <strong>Age </strong> @Html.EditorFor(m => m.Age)<br /><br />
+    <strong>City </strong> @Html.EditorFor(m => m.City) <br /><br />
+    <strong>Handicap </strong> @Html.EditorFor(m => m.isHandicapped)<br /><br />
+    <input id = "Submit" type = "submit" value = "submit" />
 }
+
 <hr />
-<h2>Textareafor Details</h2>
-@ViewBag.name
+<h2>Editorfor Details</h2>
+<b>User name:</b>@ViewBag.UserName<br />
+<b>Age:</b>@ViewBag.Age<br />
+<b>City:</b>@ViewBag.City<br />
+@ViewBag.hd
