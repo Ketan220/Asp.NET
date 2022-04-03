@@ -2,25 +2,29 @@
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 
-@model WebApplication29.Models.Radiobutton2Model
-
-@using(Html.BeginForm("Index","Radiobutton2",FormMethod.Post))
+@model WebApplication29.Models.SignupModel
+@using(Html.BeginForm("Index","Signup",FormMethod.Post))
 {
-    <h2>Bank Of Maharashtra</h2>
+   <h2>Signup Form</h2>
+   <br />
+   <b>Username:-</b>@Html.TextBoxFor(m=>m.username,"",new {style="color:blue"})
+   <br />
+   <br />
+   <b>Gender:-</b>@Html.RadioButtonFor(m=>m.gender,"male")<b>male</b>  @Html.RadioButtonFor(m=>m.gender,"female")<b>female</b>
+   <br />
+   <br />
+   <b>Courses:-</b>@Html.CheckBoxFor(m=>m.java,false)<b>Java</b>     @Html.CheckBoxFor(m=>m.dotnet,false)<b>Dotnet</b>
+   <br />
+   <br />
+   <b>City:-</b>
+    @Html.DropDownList("SelectCityType", new SelectList(Enum.GetValues(typeof(SignupModel.CityType))),"--Select CityType--")
     <br />
-    <b>Enter Account no:-</b>@Html.TextBoxFor(m=>m.actno,"",new{style="color:blue"})
     <br />
-    <br />
-    <b>Enter Amount:-</b>@Html.TextBoxFor(m=>m.amt,"",new{style="color:blue"})
-    <br />
-    <br />
-    @Html.RadioButtonFor(m=>m.balance,"")<b>Balance |</b>    @Html.RadioButtonFor(m=>m.withdraw,"")<b>Withdraw |</b>
-    <br />
-    <br />
-    <input type="submit" value="submit"/>
-
+   <input type="submit" value="Ok"/>
 }
 <hr />
-<h4>Bank Passbook</h4>
-<b>Balance is:-</b>@ViewBag.balance M<br />
-@ViewBag.withdraw
+<h4>Signup Form Details</h4>
+<b>Username:</b>@ViewBag.username<br />
+<b>Gender:</b>@ViewBag.gender<br />
+<b>Course:</b>@ViewBag.java @ViewBag.dotnet<br />
+<b>City:-</b>@ViewBag.CityType
