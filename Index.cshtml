@@ -3,22 +3,30 @@
     ViewBag.Title = "Index";
 }
 
-@model WebApplication35.Models.CalModel
+@model WebApplication35.Models.SalaryModel
 
-@using (Html.BeginForm("Index", "Cal", FormMethod.Post))
-{
-    <h2>Check which no. is greater</h2>
+@using (Html.BeginForm("Index","Salary",FormMethod.Post))
+            {
+                <h2>Employee Salary</h2>
+                <br /><br />
+                <b>Enter empno:-</b>@Html.TextBoxFor(m=>m.empno,"",new {style="color:blue"})
     <br />
     <br />
-    <b>Enter number1:-</b>@Html.TextBoxFor(m=>m.num1, "", new { style = "color:blue" })
+    <b>Enter empname:-</b>@Html.TextBoxFor(m=>m.empname,"",new {style="color:blue"})
     <br />
     <br />
-    <b>Enter numveer2:-</b>@Html.TextBoxFor(m=>m.num2, "", new { Style = "color:blue" })
+    <b>Enter basicsalary:-</b>@Html.TextBoxFor(m=>m.bs,"",new {style="color:blue"})
     <br />
     <br />
-    <input type="submit" value="calculate" />
-}
+    <input type="submit" value="calculate"/>
+            }
 <hr />
-<br />
-<b>Result:</b>@ViewBag.result
+<h4>Employee salary Details</h4>
+<b>Empno:-</b>@ViewBag.empno<br />
+<b>Empname:-</b>@ViewBag.empname<br />
+<b>BasicSalay:-</b>@ViewBag.bs1<br />
+<b>Hra<:-/b>@ViewBag.hra<br />
+<b>Da:-</b>@ViewBag.da<br />
+<b>ta:-</b>@ViewBag.ta<br />
+<b>Total:-</b>@ViewBag.total
 
