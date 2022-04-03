@@ -2,27 +2,15 @@
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 
- @model WebApplication30.Models.PasswordModel;
-<h1>Html.PasswordFor Example</h1>
- 
-@using (Html.BeginForm("Index", "Home", FormMethod.Post))
+@model WebApplication30.Models.TextareaforModel
+@using (Html.BeginForm("Index", "Textareafor", FormMethod.Post))
 {
-    //Basic password Field Example
-    @Html.Password("BasicPassword")
+    <h1>Textareafor </h1><br /><br />
+    <b>Name: </b>@Html.TextAreaFor(m => m.Name, new { style = "color:red" }) 
     <br />
-    //Strongly Typed Hidden Field
-    @Html.PasswordFor(m => m.Password)
-    @Html.ValidationMessageFor(m=>m.Password, "", new { @class = "error"})
     <br />
-    @Html.PasswordFor(m => m.ConfirmPassword)
-    @Html.ValidationMessageFor(m => m.ConfirmPassword, "", new { @class = "error" })
-    <br /><br />
-    <input id="Submit" type="submit" value="submit" />
+    <input type="submit" value="textarea"/>
 }
- 
 <hr />
- 
-<p><strong>Value:</strong> @ViewBag.BasicPassword</p><br />
-<p><strong>Value:</strong> @ViewBag.StrongPassword</p><br />
-
-
+<h2>Textareafor Details</h2>
+@ViewBag.name
