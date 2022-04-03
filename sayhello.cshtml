@@ -1,0 +1,21 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+@model WebApplication29.Models.Radiobutton3Model
+
+@using (Html.BeginForm("Sayhello","Radiobutton3",FormMethod.Post))
+{
+    <h2>Ansers the question</h2>
+    <br />
+    <br />
+    <b>Capital of India ?</b>
+    <br />
+    @Html.CheckBoxFor(m=>m.mumbai,false)<b>mumbai</b>    @Html.CheckBoxFor(m=>m.delhi,false)<b>delhi</b>
+    <br />
+    <br />
+    <input type="submit" value="Result"/>
+
+}
+<hr />
+<b>You Score out of 3 is</b>
