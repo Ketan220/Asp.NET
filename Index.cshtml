@@ -1,25 +1,24 @@
-﻿
-@{
-    ViewBag.Title = "Index";
-}
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
 
-@model WebApplication26.Models.SignupModel2
-
-@using (Html.BeginForm("Index", "Signup2", FormMethod.Post))
+@model WebApplication27.Models.MarksModel;
+@using (Html.BeginForm("Index","Marks",FormMethod.Post))
 {
-    <h2>Signup2 Form</h2>
-    <b>User name:</b>@Html.TextBoxFor(m => m.username,new { @value = "Enter username", Style = "color:red" })
+    <h2>Students Marks</h2>
+    <br />
+    <b>Enter marks1:</b>@Html.TextBox("marks1","",new{style="color:blue"})
+    <br />
+    <b>Enter marks2:</b>@Html.TextBox("marks2","",new{style="color:blue"})
+    <br />
+    <b>Enter marks3:</b>@Html.TextBox("marks3","",new{style="color:red"})
+    <br />
+    <br />
+    <input type="submit" value="marks"/>
 
-    <br />
-    <br />
-    <b>password:</b>@Html.TextBoxFor(m=>m.password,new {@value="Enter password",sryle="color:green"})
-    <br />
-    <br />
-    <input type="submit" value=" Signup2"/>
-     <hr />
-
-    <h3>Signup2 Form Details</h3>
-    <p>User name is:</p>@ViewBag.username<br />
-    <p>Password is:</p>@ViewBag.password 
 }
-
+<hr />
+<h3>Students marks Details</h3>
+<b>Total:</b>@ViewBag.total;<br />
+<b>Percentage:</b>@ViewBag.per;<br />
+<b>Grade:</b>@ViewBag.res;
