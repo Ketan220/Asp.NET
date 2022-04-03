@@ -2,29 +2,20 @@
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 
-@model WebApplication29.Models.SignupModel
-@using(Html.BeginForm("Index","Signup",FormMethod.Post))
+<h1>Html.DisplayFor Example</h1>
+@model WebApplication30.Models.DisplayforModel;
+@using (Html.BeginForm("Index", "Displayfor", FormMethod.Post))
 {
-   <h2>Signup Form</h2>
-   <br />
-   <b>Username:-</b>@Html.TextBoxFor(m=>m.username,"",new {style="color:blue"})
-   <br />
-   <br />
-   <b>Gender:-</b>@Html.RadioButtonFor(m=>m.gender,"male")<b>male</b>  @Html.RadioButtonFor(m=>m.gender,"female")<b>female</b>
-   <br />
-   <br />
-   <b>Courses:-</b>@Html.CheckBoxFor(m=>m.java,false)<b>Java</b>     @Html.CheckBoxFor(m=>m.dotnet,false)<b>Dotnet</b>
-   <br />
-   <br />
-   <b>City:-</b>
-    @Html.DropDownList("SelectCityType", new SelectList(Enum.GetValues(typeof(SignupModel.CityType))),"--Select CityType--")
+    <span>Enter Your Name:</span>@Html.TextBoxFor(m => m.UserName)
     <br />
     <br />
-   <input type="submit" value="Ok"/>
+    <input id = "Submit" type = "submit" value = "submit" />
+       
 }
+ 
 <hr />
-<h4>Signup Form Details</h4>
-<b>Username:</b>@ViewBag.username<br />
-<b>Gender:</b>@ViewBag.gender<br />
-<b>Course:</b>@ViewBag.java @ViewBag.dotnet<br />
-<b>City:-</b>@ViewBag.CityType
+ 
+<strong>Strongly Typed Value:</strong> @Html.DisplayFor(m => m.UserName)<br />
+ 
+<strong>Loosely &nbsp;Typed Value: </strong> @Html.Display("UserName")
+
