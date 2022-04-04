@@ -1,32 +1,45 @@
-﻿
+﻿@model IEnumerable<WebApplication36.Models.ItemModel>
+
 @{
     ViewBag.Title = "Index";
 }
 
-@model WebApplication35.Models.SalaryModel
+<h2>Index</h2>
 
-@using (Html.BeginForm("Index","Salary",FormMethod.Post))
-            {
-                <h2>Employee Salary</h2>
-                <br /><br />
-                <b>Enter empno:-</b>@Html.TextBoxFor(m=>m.empno,"",new {style="color:blue"})
-    <br />
-    <br />
-    <b>Enter empname:-</b>@Html.TextBoxFor(m=>m.empname,"",new {style="color:blue"})
-    <br />
-    <br />
-    <b>Enter basicsalary:-</b>@Html.TextBoxFor(m=>m.bs,"",new {style="color:blue"})
-    <br />
-    <br />
-    <input type="submit" value="calculate"/>
-            }
-<hr />
-<h4>Employee salary Details</h4>
-<b>Empno:-</b>@ViewBag.empno<br />
-<b>Empname:-</b>@ViewBag.empname<br />
-<b>BasicSalay:-</b>@ViewBag.bs1<br />
-<b>Hra<:-/b>@ViewBag.hra<br />
-<b>Da:-</b>@ViewBag.da<br />
-<b>ta:-</b>@ViewBag.ta<br />
-<b>Total:-</b>@ViewBag.total
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Category)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        <th></th>
+    </tr>
 
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Category)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Price)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>
