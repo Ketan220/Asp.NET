@@ -1,26 +1,96 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using WebApplication23.Models;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+using WebApplication36.Models;
 
-namespace WebApplication23.Controllers
+namespace WebApplication36.Controllers
 {
     public class ItemController : Controller
     {
-        public IActionResult Index()
+        // GET: Item
+        // 1. *********** Display All Item List in Index Page ***********
+        public ActionResult Index()
         {
-            ViewBag.ItemList = "Computer Shop Item List Page";
-
-            List<ItemList> ilist=new List<ItemList>();
-
-            {
-                new ItemList { Id = 1, Name = "iphone", Category = "phone", Price = 89000 };
-                new ItemList { Id = 2, Name = "Harddisk", Category = "computer", Price = 2999 };
-                new ItemList { Id = 3, Name = "Mouse", Category = "Computer", Price = 120 };
-                new ItemList { Id = 4, Name = "Samsung Note3", Category = "Mobile", Price = 9348 };
-            };
+            ViewBag.ItemList = "Cpomputer Shop Item List";
+            ItemDBHandler Ihandler=new ItemDBHandler();
+            ModelState.Clear();
 
 
-
-            return View(ilist);
+            return View(Ihandler.GetItemList());
         }
+
+        // 2. *********** Add New Item ***********
+        [HttpGet]
+        public ActionResult create()
+        {
+            return View();  
+        }
+        [HttpPost]
+        public ActionResult Create(ItemModel iList)
+        {
+            if(ModelState.IsValid)
+            {
+                ItemDBHandler Itemhandler=new ItemDBHandler();
+
+                if(Itemhandler.InsertItem(iList))
+                {
+                    ViewBag.Message = "Item Added Successfully";
+                    ModelState.Clear();
+
+                }
+            }
+            return View();
+        }
+
+        // 3. *********** Update Item Details ***********
+        [HttpGet]
+        public ActionResult Edit(int id)
+        {
+            ItemDBHandler ItemHandler = new ItemDBHandler();
+            return View(ItemHandler.GetItemList().Find(itemmodel => itemmodel.ID == id));
+        }
+        [HttpPost]
+        public ActionResult Edit(int id, ItemModel iList)
+        {
+            try
+            {
+                ItemDBHandler ItemHandler = new ItemDBHandler();
+                ItemHandler.UpdateItem(iList);
+                return RedirectToAction("Index");
+            }
+            catch { return View(); }
+        }
+
+
+        // 4. *********** Delete Item Details ***********
+        public ActionResult Delete(int id)
+        {
+            try
+            {
+                ItemDBHandler Ihandler = new ItemDBHandler();
+                if (Ihandler.DeleteItem(id))
+                {
+                    ViewBag.AlertMsg = "Item Deleted Successfully";
+                }
+
+                return RedirectToAction("Index");
+            }
+             catch
+            {
+                return View();
+            }
+        }
+
+        // 5. *********** Search Items ***********
+        public ActionResult Details(int id)
+        {
+               ItemDBHandler Ihandler=new ItemDBHandler(); 
+                return View(Ihandler.GetItemList().Find(ItemModel=>ItemModel.ID == id));    
+           
+        }
+
+
     }
 }
