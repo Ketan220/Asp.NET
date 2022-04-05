@@ -1,33 +1,87 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using WebApplication29.Models;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+using WebApplication37.Models;
 
-namespace WebApplication29.Controllers
+namespace WebApplication37.Controllers
 {
     public class SignupController : Controller
     {
-        public IActionResult Index()
+        // GET: Signup
+        public ActionResult Index()
+        {
+            return View();
+        }
+        // 2. *********** Add New Item ***********
+        [HttpGet]
+        public ActionResult Create()
         {
             return View();
         }
         [HttpPost]
-        public IActionResult Index(SignupModel u)
+        public ActionResult Create(SignupModel iList)
         {
-            ViewBag.username = u.username;
-            ViewBag.gender=u.gender;
-
-            if(u.java==true)
+            // try
+            //{
+            if (ModelState.IsValid)
             {
-                ViewBag.java = "Java";
+                SignupDBHandler ItemHandler = new SignupDBHandler();
+                if (ItemHandler.InsertItem(iList))
+                {
+                    ViewBag.Message = "Item Added Successfully";
+                    ModelState.Clear();
+                }
             }
-            else if(u.dotnet==true)
-            {
-                ViewBag.dotnet = "dotnet";
-            }
+            return View();
+            /* }
+             catch { return View();  }*/
+        }
 
-            var selectedValue = u.SelectCityType;
-            ViewBag.CityType = selectedValue.ToString();
-
+        [HttpGet]
+        public ActionResult Login()
+        {
             return View();
         }
+        [HttpPost]
+        public ActionResult Login(SignupModel iList)
+        {
+            try
+            {
+            if (ModelState.IsValid)
+            {
+
+                SignupDBHandler ItemHandler = new SignupDBHandler();
+                Boolean b = ItemHandler.GetItemList(iList);
+                    if(b==true)
+                    {
+                        Response.Redirect("https://localhost:44384/Product");
+                    }
+                    else
+                    {
+                        ViewBag.msg = "Invalid username and password,try again";
+                    }
+             
+                   
+
+
+            }
+                return View();
+            }
+             catch
+            {
+                
+                
+                return View();  
+            }
+        }
+
+        public ActionResult Details(int id)
+        {
+            SignupDBHandler ItemHandler = new SignupDBHandler();
+            return View();
+        }
+
     }
 }
