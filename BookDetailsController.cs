@@ -6,13 +6,13 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using WebApplication38.Models;
+using WebApplication40;
 
-namespace WebApplication38.Controllers
+namespace WebApplication40.Controllers
 {
     public class BookDetailsController : Controller
     {
-        private LibraryDBEntities db = new LibraryDBEntities();
+        private StudentContext db = new StudentContext();
 
         // GET: BookDetails
         public ActionResult Index()
