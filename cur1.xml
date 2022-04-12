@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<tpms>
+	<currencies>
+		<currency Name="Indian Rupee" code="INR" />
+		<currency Name="United Arab Emirates" code="AED" />
+		<currency Name="Omani Rial" code="OMR" />
+	</currencies>
+</tpms>
+
